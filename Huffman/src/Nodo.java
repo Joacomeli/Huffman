@@ -4,10 +4,14 @@ package ColaPrioridad;
 public  class Nodo{
     String letra;
     int frecuencia;
+    String codigo;
     Nodo hijoIzq;
     Nodo hijoDer;
 
-
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+    public String getCodigo() {return codigo;}
     public void setFrecuencia(int frecuencia) {
         this.frecuencia = frecuencia;
     }

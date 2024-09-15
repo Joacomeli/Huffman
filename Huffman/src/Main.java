@@ -23,12 +23,26 @@ public class Main {
             return;
         }
         if (raiz.getHijoDer() == null && raiz.getHijoIzq() == null) {
-            System.out.println(raiz.getLetra());
-            System.out.println(code);
+            raiz.setCodigo(code);
         }
 
         codificacion(raiz.getHijoDer(), code + "1");
         codificacion(raiz.getHijoIzq(), code + "0");
+    }
+
+    public static void PrintHorizontal(Nodo n, int cont) {
+        if (n.getHijoDer()!=null && n.getHijoIzq()!=null) {
+            PrintHorizontal(n.getHijoDer(), cont +1);
+            String tab = "	".repeat(cont);
+            System.out.print(tab);
+            System.out.println(n.getFrecuencia() + "%");
+            PrintHorizontal(n.getHijoIzq(),cont +1);
+        }
+        if (n.getLetra() != null){
+            String tab = "	".repeat(cont);
+            System.out.print(tab);
+            System.out.println("(" + n.getFrecuencia()+"%) " + n.getLetra() + " - " +n.getCodigo());
+        }
     }
 
     public static Nodo armarArbol(ColaP cola){         //Arma el arbol
@@ -71,6 +85,7 @@ public class Main {
         }
         Nodo raiz = armarArbol(fL);
         codificacion(raiz, "");
+        PrintHorizontal(raiz, 0);
     }
 
 }
